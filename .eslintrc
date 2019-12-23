@@ -8,8 +8,13 @@
     "node": true
   },
   "parserOptions": {
+    "allowImportExportEverywhere": true,
     "ecmaVersion": 6,
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    }
   },
   "globals": {
     "alert": false,
