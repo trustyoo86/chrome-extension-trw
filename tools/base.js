@@ -1,6 +1,7 @@
 'use strict';
 
 const { join, resolve } = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const rootPath = resolve(__dirname, '..');
 const srcPath = resolve(rootPath, 'src');
