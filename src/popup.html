@@ -3,5 +3,8 @@
   <head></head>
   <body>
     <div id="root"></div>
+    <% for(var i = 0; i < htmlWebpackPlugin.options.files.js.length; i++) { %>
+      <script src="<%= htmlWebpackPlugin.options.files.js[i] %>"></script>
+    <% } %>
   </body>
 </html>
