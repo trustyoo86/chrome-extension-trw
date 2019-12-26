@@ -2,6 +2,7 @@
 
 const { join, resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const rootPath = resolve(__dirname, '..');
 const srcPath = resolve(rootPath, 'src');
@@ -35,5 +36,28 @@ module.exports = {
       }
     ],
   },
-  plugins: [],  
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    alias: {
+      'components': resolve(srcPath, 'components'),
+      'containers': resolve(srcPath, 'containers'),
+      'stores': resolve(srcPath, 'stores'),
+    },
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: join(distPath, 'popup.html'),
+      template: join(srcPath, 'popup.html'),
+      inject: false,
+      files: {
+        js: ['popup.js'],
+      },
+    }),
+    new CopyPlugin([
+      {
+        from: join(srcPath, 'manifest.json'), 
+        to: join(distPath, 'manifest.json'),
+      },
+    ]),
+  ],  
 };
